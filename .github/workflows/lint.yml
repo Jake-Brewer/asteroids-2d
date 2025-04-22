@@ -17,7 +17,10 @@ jobs:
           node-version: 18
       - name: Install dependencies
         run: npm install
+        working-directory: ${{ github.workspace }}
       - name: Run ESLint
         run: npm run lint
+        working-directory: ${{ github.workspace }}
       - name: Check Prettier formatting
         run: npx prettier --check .
+        working-directory: ${{ github.workspace }}
