@@ -2,7 +2,13 @@
 // Highly modular, LLM-first design. All logic is broken into the smallest possible methods.
 // This file and class are kept well under 500 lines for maintainability.
 
-import { SCREEN_WIDTH, SCREEN_HEIGHT, SHIP_RADIUS, SHIP_THRUST, SHIP_ROTATE_SPEED } from "../utils/Constants.js";
+import {
+  SCREEN_WIDTH,
+  SCREEN_HEIGHT,
+  SHIP_RADIUS,
+  SHIP_THRUST,
+  SHIP_ROTATE_SPEED,
+} from "../utils/Constants.js";
 
 export default class Ship {
   constructor(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2) {

@@ -1,6 +1,6 @@
 // Utility math functions
 export function degToRad(degrees) {
-  return degrees * Math.PI / 180;
+  return (degrees * Math.PI) / 180;
 }
 
 export function randomBetween(min, max) {

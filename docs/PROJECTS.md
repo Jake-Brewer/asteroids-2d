@@ -1,6 +1,7 @@
 # Project Tracking (Kanban)
 
 ## TODO
+
 - Implement Ship entity
 - Implement InputSystem
 - Implement PhysicsSystem
@@ -13,8 +14,10 @@
 - Polish and refactor
 
 ## DOING
+
 - Documentation and project setup
 
 ## DONE
+
 - Initial project structure and documentation
 - GitHub repo creation and first push
