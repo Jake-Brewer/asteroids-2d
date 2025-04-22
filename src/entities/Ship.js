@@ -2,8 +2,7 @@
 // Highly modular, LLM-first design. All logic is broken into the smallest possible methods.
 // This file and class are kept well under 500 lines for maintainability.
 
-import { SCREEN_WIDTH, SCREEN_HEIGHT, SHIP_RADIUS, SHIP_THRUST, SHIP_ROTATE_SPEED } from '../utils/Constants.js';
-import { degToRad } from '../utils/MathUtils.js';
+import { SCREEN_WIDTH, SCREEN_HEIGHT, SHIP_RADIUS, SHIP_THRUST, SHIP_ROTATE_SPEED } from "../utils/Constants.js";
 
 export default class Ship {
   constructor(x = SCREEN_WIDTH / 2, y = SCREEN_HEIGHT / 2) {
@@ -83,7 +82,7 @@ export default class Ship {
   }
 
   _drawShipShape(ctx) {
-    ctx.strokeStyle = '#fff';
+    ctx.strokeStyle = "#fff";
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.moveTo(this.radius, 0);
@@ -95,5 +94,4 @@ export default class Ship {
   }
 }
 
-// End of Ship.js (well under 500 lines, highly modular, LLM-optimized)
-
+// End of "Ship.js" (well under 500 lines, highly modular, LLM-optimized)

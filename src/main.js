@@ -3,4 +3,4 @@
 
 // TODO: Import and initialize systems
 
-console.log('Asteroids game starting...');
+console.log("Asteroids game starting...");
