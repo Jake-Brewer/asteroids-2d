@@ -1,0 +1,13 @@
+﻿2025-04-22T22:04:38.7306255Z ##[group]Run npm install
+2025-04-22T22:04:38.7306818Z [36;1mnpm install[0m
+2025-04-22T22:04:38.7360499Z shell: /usr/bin/bash -e {0}
+2025-04-22T22:04:38.7361286Z ##[endgroup]
+2025-04-22T22:04:39.2199017Z npm error code ENOENT
+2025-04-22T22:04:39.2199674Z npm error syscall open
+2025-04-22T22:04:39.2200749Z npm error path /home/runner/work/asteroids-2d/asteroids-2d/package.json
+2025-04-22T22:04:39.2201714Z npm error errno -2
+2025-04-22T22:04:39.2203452Z npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/home/runner/work/asteroids-2d/asteroids-2d/package.json'
+2025-04-22T22:04:39.2205620Z npm error enoent This is related to npm not being able to find a file.
+2025-04-22T22:04:39.2206603Z npm error enoent
+2025-04-22T22:04:39.2214283Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2025-04-22T22_04_38_811Z-debug-0.log
+2025-04-22T22:04:39.2283569Z ##[error]Process completed with exit code 254.

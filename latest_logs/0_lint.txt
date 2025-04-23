@@ -1,0 +1,141 @@
+﻿2025-04-22T22:04:36.2702343Z Current runner version: '2.323.0'
+2025-04-22T22:04:36.2728669Z ##[group]Operating System
+2025-04-22T22:04:36.2729402Z Ubuntu
+2025-04-22T22:04:36.2729877Z 24.04.2
+2025-04-22T22:04:36.2730465Z LTS
+2025-04-22T22:04:36.2730901Z ##[endgroup]
+2025-04-22T22:04:36.2731396Z ##[group]Runner Image
+2025-04-22T22:04:36.2732012Z Image: ubuntu-24.04
+2025-04-22T22:04:36.2732543Z Version: 20250413.1.0
+2025-04-22T22:04:36.2733513Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20250413.1/images/ubuntu/Ubuntu2404-Readme.md
+2025-04-22T22:04:36.2735159Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20250413.1
+2025-04-22T22:04:36.2736068Z ##[endgroup]
+2025-04-22T22:04:36.2736540Z ##[group]Runner Image Provisioner
+2025-04-22T22:04:36.2737193Z 2.0.422.1
+2025-04-22T22:04:36.2737614Z ##[endgroup]
+2025-04-22T22:04:36.2738627Z ##[group]GITHUB_TOKEN Permissions
+2025-04-22T22:04:36.2740457Z Contents: read
+2025-04-22T22:04:36.2740976Z Metadata: read
+2025-04-22T22:04:36.2741754Z Packages: read
+2025-04-22T22:04:36.2742312Z ##[endgroup]
+2025-04-22T22:04:36.2744574Z Secret source: Actions
+2025-04-22T22:04:36.2745654Z Prepare workflow directory
+2025-04-22T22:04:36.3061941Z Prepare all required actions
+2025-04-22T22:04:36.3098261Z Getting action download info
+2025-04-22T22:04:36.8502446Z ##[group]Download immutable action package 'actions/checkout@v4'
+2025-04-22T22:04:36.8503483Z Version: 4.2.2
+2025-04-22T22:04:36.8504394Z Digest: sha256:ccb2698953eaebd21c7bf6268a94f9c26518a7e38e27e0b83c1fe1ad049819b1
+2025-04-22T22:04:36.8505821Z Source commit SHA: 11bd71901bbe5b1630ceea73d27597364c9af683
+2025-04-22T22:04:36.8506520Z ##[endgroup]
+2025-04-22T22:04:36.9361538Z ##[group]Download immutable action package 'actions/setup-node@v4'
+2025-04-22T22:04:36.9362315Z Version: 4.4.0
+2025-04-22T22:04:36.9363045Z Digest: sha256:9427cefe82346e992fb5b949e3569b39d537ae41aa3086483b14eceebfc16bc1
+2025-04-22T22:04:36.9364032Z Source commit SHA: 49933ea5288caeca8642d1e84afbd3f7d6820020
+2025-04-22T22:04:36.9364671Z ##[endgroup]
+2025-04-22T22:04:37.3171082Z Complete job name: lint
+2025-04-22T22:04:37.3819701Z ##[group]Run actions/checkout@v4
+2025-04-22T22:04:37.3820518Z with:
+2025-04-22T22:04:37.3820933Z   repository: Jake-Brewer/asteroids-2d
+2025-04-22T22:04:37.3821573Z   token: ***
+2025-04-22T22:04:37.3821946Z   ssh-strict: true
+2025-04-22T22:04:37.3822326Z   ssh-user: git
+2025-04-22T22:04:37.3822716Z   persist-credentials: true
+2025-04-22T22:04:37.3823144Z   clean: true
+2025-04-22T22:04:37.3823524Z   sparse-checkout-cone-mode: true
+2025-04-22T22:04:37.3823993Z   fetch-depth: 1
+2025-04-22T22:04:37.3824369Z   fetch-tags: false
+2025-04-22T22:04:37.3824758Z   show-progress: true
+2025-04-22T22:04:37.3825419Z   lfs: false
+2025-04-22T22:04:37.3825779Z   submodules: false
+2025-04-22T22:04:37.3826173Z   set-safe-directory: true
+2025-04-22T22:04:37.3827204Z ##[endgroup]
+2025-04-22T22:04:37.5527963Z Syncing repository: Jake-Brewer/asteroids-2d
+2025-04-22T22:04:37.5529770Z ##[group]Getting Git version info
+2025-04-22T22:04:37.5530548Z Working directory is '/home/runner/work/asteroids-2d/asteroids-2d'
+2025-04-22T22:04:37.5531493Z [command]/usr/bin/git version
+2025-04-22T22:04:37.5571034Z git version 2.49.0
+2025-04-22T22:04:37.5598623Z ##[endgroup]
+2025-04-22T22:04:37.5612238Z Temporarily overriding HOME='/home/runner/work/_temp/86a691ec-bc6d-4da1-be48-edca52a9bc92' before making global git config changes
+2025-04-22T22:04:37.5613586Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-22T22:04:37.5624025Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/asteroids-2d/asteroids-2d
+2025-04-22T22:04:37.5656994Z Deleting the contents of '/home/runner/work/asteroids-2d/asteroids-2d'
+2025-04-22T22:04:37.5660552Z ##[group]Initializing the repository
+2025-04-22T22:04:37.5664985Z [command]/usr/bin/git init /home/runner/work/asteroids-2d/asteroids-2d
+2025-04-22T22:04:37.5723761Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-22T22:04:37.5725644Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-22T22:04:37.5726948Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-22T22:04:37.5728165Z hint:
+2025-04-22T22:04:37.5728955Z hint: 	git config --global init.defaultBranch <name>
+2025-04-22T22:04:37.5730037Z hint:
+2025-04-22T22:04:37.5730903Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-22T22:04:37.5732063Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-22T22:04:37.5732767Z hint:
+2025-04-22T22:04:37.5733131Z hint: 	git branch -m <name>
+2025-04-22T22:04:37.5733854Z Initialized empty Git repository in /home/runner/work/asteroids-2d/asteroids-2d/.git/
+2025-04-22T22:04:37.5741274Z [command]/usr/bin/git remote add origin https://github.com/Jake-Brewer/asteroids-2d
+2025-04-22T22:04:37.5773296Z ##[endgroup]
+2025-04-22T22:04:37.5774001Z ##[group]Disabling automatic garbage collection
+2025-04-22T22:04:37.5777269Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-22T22:04:37.5805552Z ##[endgroup]
+2025-04-22T22:04:37.5806190Z ##[group]Setting up auth
+2025-04-22T22:04:37.5811726Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-22T22:04:37.5841055Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-22T22:04:37.6121010Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-22T22:04:37.6149547Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-22T22:04:37.6373717Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-22T22:04:37.6409496Z ##[endgroup]
+2025-04-22T22:04:37.6410241Z ##[group]Fetching the repository
+2025-04-22T22:04:37.6417976Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +954fd3f64931324a234a5d2c36ac13d8bb0a8157:refs/remotes/origin/main
+2025-04-22T22:04:38.1684347Z From https://github.com/Jake-Brewer/asteroids-2d
+2025-04-22T22:04:38.1687510Z  * [new ref]         954fd3f64931324a234a5d2c36ac13d8bb0a8157 -> origin/main
+2025-04-22T22:04:38.1710865Z ##[endgroup]
+2025-04-22T22:04:38.1712202Z ##[group]Determining the checkout info
+2025-04-22T22:04:38.1713513Z ##[endgroup]
+2025-04-22T22:04:38.1717828Z [command]/usr/bin/git sparse-checkout disable
+2025-04-22T22:04:38.1756101Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-22T22:04:38.1782973Z ##[group]Checking out the ref
+2025-04-22T22:04:38.1786358Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-04-22T22:04:38.1841877Z Switched to a new branch 'main'
+2025-04-22T22:04:38.1844265Z branch 'main' set up to track 'origin/main'.
+2025-04-22T22:04:38.1851630Z ##[endgroup]
+2025-04-22T22:04:38.1883840Z [command]/usr/bin/git log -1 --format=%H
+2025-04-22T22:04:38.1905734Z 954fd3f64931324a234a5d2c36ac13d8bb0a8157
+2025-04-22T22:04:38.2190210Z ##[group]Run actions/setup-node@v4
+2025-04-22T22:04:38.2191310Z with:
+2025-04-22T22:04:38.2192000Z   node-version: 18
+2025-04-22T22:04:38.2192776Z   always-auth: false
+2025-04-22T22:04:38.2193595Z   check-latest: false
+2025-04-22T22:04:38.2194671Z   token: ***
+2025-04-22T22:04:38.2195529Z ##[endgroup]
+2025-04-22T22:04:38.3896661Z Found in cache @ /opt/hostedtoolcache/node/18.20.8/x64
+2025-04-22T22:04:38.3903045Z ##[group]Environment details
+2025-04-22T22:04:38.7198632Z node: v18.20.8
+2025-04-22T22:04:38.7199151Z npm: 10.8.2
+2025-04-22T22:04:38.7199650Z yarn: 1.22.22
+2025-04-22T22:04:38.7200586Z ##[endgroup]
+2025-04-22T22:04:38.7306285Z ##[group]Run npm install
+2025-04-22T22:04:38.7306821Z [36;1mnpm install[0m
+2025-04-22T22:04:38.7360520Z shell: /usr/bin/bash -e {0}
+2025-04-22T22:04:38.7361291Z ##[endgroup]
+2025-04-22T22:04:39.2199063Z npm error code ENOENT
+2025-04-22T22:04:39.2199683Z npm error syscall open
+2025-04-22T22:04:39.2200762Z npm error path /home/runner/work/asteroids-2d/asteroids-2d/package.json
+2025-04-22T22:04:39.2201729Z npm error errno -2
+2025-04-22T22:04:39.2203475Z npm error enoent Could not read package.json: Error: ENOENT: no such file or directory, open '/home/runner/work/asteroids-2d/asteroids-2d/package.json'
+2025-04-22T22:04:39.2205640Z npm error enoent This is related to npm not being able to find a file.
+2025-04-22T22:04:39.2206609Z npm error enoent
+2025-04-22T22:04:39.2214311Z npm error A complete log of this run can be found in: /home/runner/.npm/_logs/2025-04-22T22_04_38_811Z-debug-0.log
+2025-04-22T22:04:39.2283599Z ##[error]Process completed with exit code 254.
+2025-04-22T22:04:39.2467641Z Post job cleanup.
+2025-04-22T22:04:39.3400362Z [command]/usr/bin/git version
+2025-04-22T22:04:39.3438231Z git version 2.49.0
+2025-04-22T22:04:39.3482392Z Temporarily overriding HOME='/home/runner/work/_temp/42315b5f-0605-4bba-91ff-8a63a25d6504' before making global git config changes
+2025-04-22T22:04:39.3484316Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-22T22:04:39.3496178Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/asteroids-2d/asteroids-2d
+2025-04-22T22:04:39.3530839Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-22T22:04:39.3564109Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-22T22:04:39.3801638Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-22T22:04:39.3824804Z http.https://github.com/.extraheader
+2025-04-22T22:04:39.3838106Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-04-22T22:04:39.3871216Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-22T22:04:39.4234485Z Cleaning up orphan processes

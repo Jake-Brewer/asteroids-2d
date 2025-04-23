@@ -1,0 +1,13 @@
+[build]
+  publish = "."
+  command = "echo No build step required"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+[context.production.environment]
+  NODE_ENV = "production"
+
+[dev]
+  command = "npx serve ."
+  port = 8888
