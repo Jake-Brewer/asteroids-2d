@@ -1,6 +1,9 @@
 // Entry point for Ass-Steroids! (Atari-style Splash)
 // Minimal retro splash screen with modular code for future expansion
 
+import Ship from './entities/Ship.js';
+import InputSystem from './systems/InputSystem.js';
+
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -21,6 +24,11 @@ const stars = Array.from({length: STAR_COUNT}, () => ({
 let flash = true;
 let flashTimer = 0;
 const FLASH_INTERVAL = 500; // ms
+
+// --- Game Entities ---
+const ship = new Ship();
+const inputSystem = new InputSystem(ship);
+let gameStarted = false;
 
 function drawStarfield() {
   ctx.save();
@@ -76,12 +84,23 @@ function draw() {
   ctx.fillStyle = BG_COLOR;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   drawStarfield();
-  drawSplashText();
-  drawCopyright();
+  if (gameStarted) {
+    // Draw game entities
+    ship.draw(ctx);
+    // TODO: Draw asteroids, bullets
+  } else {
+    drawSplashText();
+    drawCopyright();
+  }
 }
 
 function loop(ts) {
   updateStarfield();
+  if (gameStarted) {
+    inputSystem.update(); // For extensibility
+    ship.update();
+    // TODO: Update asteroids, bullets
+  }
   draw();
   // Flashing effect
   flashTimer += 16;
@@ -91,6 +110,13 @@ function loop(ts) {
   }
   requestAnimationFrame(loop);
 }
+
+// --- Start/Transition Logic ---
+window.addEventListener('keydown', (e) => {
+  if (!gameStarted && (e.code === 'Enter' || e.code === 'Space')) {
+    gameStarted = true;
+  }
+});
 
 // Start the splash
 requestAnimationFrame(loop);
