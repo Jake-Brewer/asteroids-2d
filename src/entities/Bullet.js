@@ -1,7 +1,7 @@
 // Bullet entity definition
 // Handles bullet data and behavior
 
-import { SCREEN_WIDTH, SCREEN_HEIGHT, BULLET_RADIUS, BULLET_SPEED } from '../utils/Constants.js';
+import { SCREEN_WIDTH, SCREEN_HEIGHT, BULLET_RADIUS, BULLET_SPEED } from "../utils/Constants.js";
 
 export default class Bullet {
   constructor(x, y, angle) {
@@ -32,7 +32,7 @@ export default class Bullet {
 
   draw(ctx) {
     ctx.save();
-    ctx.fillStyle = '#fff';
+    ctx.fillStyle = "#fff";
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     ctx.fill();

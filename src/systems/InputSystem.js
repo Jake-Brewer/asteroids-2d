@@ -23,8 +23,8 @@ export default class InputSystem {
    * Binds keyboard event listeners for input handling
    */
   _bindEvents() {
-    window.addEventListener('keydown', (e) => this._onKeyDown(e));
-    window.addEventListener('keyup', (e) => this._onKeyUp(e));
+    window.addEventListener("keydown", (e) => this._onKeyDown(e));
+    window.addEventListener("keyup", (e) => this._onKeyUp(e));
   }
 
   /**
@@ -33,16 +33,16 @@ export default class InputSystem {
    */
   _onKeyDown(e) {
     switch (e.code) {
-      case 'ArrowLeft':
-      case 'KeyA':
+      case "ArrowLeft":
+      case "KeyA":
         this.keys.left = true;
         break;
-      case 'ArrowRight':
-      case 'KeyD':
+      case "ArrowRight":
+      case "KeyD":
         this.keys.right = true;
         break;
-      case 'ArrowUp':
-      case 'KeyW':
+      case "ArrowUp":
+      case "KeyW":
         this.keys.up = true;
         break;
     }
@@ -55,16 +55,16 @@ export default class InputSystem {
    */
   _onKeyUp(e) {
     switch (e.code) {
-      case 'ArrowLeft':
-      case 'KeyA':
+      case "ArrowLeft":
+      case "KeyA":
         this.keys.left = false;
         break;
-      case 'ArrowRight':
-      case 'KeyD':
+      case "ArrowRight":
+      case "KeyD":
         this.keys.right = false;
         break;
-      case 'ArrowUp':
-      case 'KeyW':
+      case "ArrowUp":
+      case "KeyW":
         this.keys.up = false;
         break;
     }

@@ -1,7 +1,7 @@
 // Asteroid entity definition
 // Handles asteroid data and behavior
 
-import { SCREEN_WIDTH, SCREEN_HEIGHT, ASTEROID_MIN_RADIUS, ASTEROID_MAX_RADIUS } from '../utils/Constants.js';
+import { SCREEN_WIDTH, SCREEN_HEIGHT, ASTEROID_MIN_RADIUS } from "../utils/Constants.js";
 
 export default class Asteroid {
   constructor(x, y, radius = ASTEROID_MIN_RADIUS, speed = 1, angle = Math.random() * Math.PI * 2) {
@@ -29,7 +29,7 @@ export default class Asteroid {
 
   draw(ctx) {
     ctx.save();
-    ctx.strokeStyle = '#fff';
+    ctx.strokeStyle = "#fff";
     ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);

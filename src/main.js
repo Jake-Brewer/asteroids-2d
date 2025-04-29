@@ -1,20 +1,20 @@
 // Entry point for Ass-Steroids! (Atari-style Splash)
 // Minimal retro splash screen with modular code for future expansion
 
-import Ship from './entities/Ship.js';
-import Asteroid from './entities/Asteroid.js';
-import Bullet from './entities/Bullet.js';
-import InputSystem from './systems/InputSystem.js';
-import GameManager from './systems/GameManager.js';
-import CollisionSystem from './systems/CollisionSystem.js';
+import Ship from "./entities/Ship.js";
+import Asteroid from "./entities/Asteroid.js";
+import Bullet from "./entities/Bullet.js";
+import InputSystem from "./systems/InputSystem.js";
+import GameManager from "./systems/GameManager.js";
+import CollisionSystem from "./systems/CollisionSystem.js";
 
-const canvas = document.getElementById('gameCanvas');
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById("gameCanvas");
+const ctx = canvas.getContext("2d");
 
 // Retro color palette
-const BG_COLOR = '#000';
-const TEXT_COLOR = '#fff';
-const ACCENT_COLOR = '#f00';
+const BG_COLOR = "#000";
+const TEXT_COLOR = "#fff";
+const ACCENT_COLOR = "#f00";
 
 // Starfield generation
 const STAR_COUNT = 64;
@@ -40,7 +40,7 @@ let canShoot = true;
 
 function drawStarfield() {
   ctx.save();
-  ctx.fillStyle = '#fff';
+  ctx.fillStyle = "#fff";
   for (const star of stars) {
     ctx.globalAlpha = 0.5 + Math.random() * 0.5;
     ctx.fillRect(star.x, star.y, 2, 2);
@@ -62,29 +62,29 @@ function updateStarfield() {
 function drawSplashText() {
   // Main title
   ctx.save();
-  ctx.font = 'bold 64px monospace';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
+  ctx.font = "bold 64px monospace";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
   ctx.shadowColor = ACCENT_COLOR;
   ctx.shadowBlur = 16;
   ctx.fillStyle = TEXT_COLOR;
-  ctx.fillText('ASS-STEROIDS!', canvas.width / 2, canvas.height / 2 - 30);
+  ctx.fillText("ASS-STEROIDS!", canvas.width / 2, canvas.height / 2 - 30);
   ctx.shadowBlur = 0;
-  ctx.font = 'bold 32px monospace';
+  ctx.font = "bold 32px monospace";
   ctx.fillStyle = ACCENT_COLOR;
   if (flash) {
-    ctx.fillText('PRESS START', canvas.width / 2, canvas.height / 2 + 50);
+    ctx.fillText("PRESS START", canvas.width / 2, canvas.height / 2 + 50);
   }
   ctx.restore();
 }
 
 function drawCopyright() {
   ctx.save();
-  ctx.font = '16px monospace';
-  ctx.textAlign = 'center';
-  ctx.fillStyle = '#888';
-  ctx.fillText('A loving parody of Atari Asteroids', canvas.width / 2, canvas.height - 40);
-  ctx.fillText('or: HEMEROIDS', canvas.width / 2, canvas.height - 20);
+  ctx.font = "16px monospace";
+  ctx.textAlign = "center";
+  ctx.fillStyle = "#888";
+  ctx.fillText("A loving parody of Atari Asteroids", canvas.width / 2, canvas.height - 40);
+  ctx.fillText("or: HEMEROIDS", canvas.width / 2, canvas.height - 20);
   ctx.restore();
 }
 
@@ -105,21 +105,21 @@ function draw() {
     if (ship.isAlive) ship.draw(ctx);
     // Draw score
     ctx.save();
-    ctx.font = '24px monospace';
+    ctx.font = "24px monospace";
     ctx.fillStyle = TEXT_COLOR;
-    ctx.textAlign = 'left';
-    ctx.fillText(`SCORE: ${gameManager.score}`, 20, 40);
+    ctx.textAlign = "left";
+    ctx.fillText("SCORE: " + gameManager.score, 20, 40);
     ctx.restore();
     // Game over overlay
     if (gameManager.gameOver) {
       ctx.save();
-      ctx.font = 'bold 48px monospace';
+      ctx.font = "bold 48px monospace";
       ctx.fillStyle = ACCENT_COLOR;
-      ctx.textAlign = 'center';
-      ctx.fillText('GAME OVER', canvas.width / 2, canvas.height / 2);
-      ctx.font = 'bold 24px monospace';
+      ctx.textAlign = "center";
+      ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
+      ctx.font = "bold 24px monospace";
       ctx.fillStyle = TEXT_COLOR;
-      ctx.fillText('Press R to Restart', canvas.width / 2, canvas.height / 2 + 50);
+      ctx.fillText("Press R to Restart", canvas.width / 2, canvas.height / 2 + 50);
       ctx.restore();
     }
   } else {
@@ -128,59 +128,72 @@ function draw() {
   }
 }
 
-function loop(ts) {
+function updateGame() {
+  inputSystem.update();
+  if (ship.isAlive) ship.update();
+  // Update asteroids
+  for (const asteroid of asteroids) {
+    if (asteroid.isAlive) asteroid.update();
+  }
+  // Update bullets
+  for (const bullet of bullets) {
+    if (bullet.isAlive) bullet.update();
+  }
+  // Remove dead bullets
+  bullets = bullets.filter(b => b.isAlive);
+  // Remove dead asteroids
+  asteroids = asteroids.filter(a => a.isAlive);
+}
+
+function handleShipAsteroidCollision() {
+  if (ship.isAlive) {
+    for (const asteroid of asteroids) {
+      if (asteroid.isAlive && CollisionSystem.circleCollides(ship, asteroid)) {
+        ship.kill();
+        gameManager.loseLife();
+        break;
+      }
+    }
+  }
+}
+
+function handleBulletAsteroidCollision() {
+  for (const bullet of bullets) {
+    if (!bullet.isAlive) continue;
+    for (const asteroid of asteroids) {
+      if (asteroid.isAlive && CollisionSystem.circleCollides(bullet, asteroid)) {
+        bullet.isAlive = false;
+        asteroid.isAlive = false;
+        gameManager.addScore(100);
+        // Optionally split asteroid if large
+        if (asteroid.radius > 25) {
+          for (let i = 0; i < 2; i++) {
+            asteroids.push(new Asteroid(
+              asteroid.x,
+              asteroid.y,
+              asteroid.radius / 2,
+              asteroid.speed * 1.2,
+              Math.random() * Math.PI * 2
+            ));
+          }
+        }
+        break;
+      }
+    }
+  }
+}
+
+function handleCollisions() {
+  handleShipAsteroidCollision();
+  handleBulletAsteroidCollision();
+}
+
+function loop() {
   updateStarfield();
   if (gameStarted) {
     if (!gameManager.gameOver) {
-      inputSystem.update();
-      if (ship.isAlive) ship.update();
-      // Update asteroids
-      for (const asteroid of asteroids) {
-        if (asteroid.isAlive) asteroid.update();
-      }
-      // Update bullets
-      for (const bullet of bullets) {
-        if (bullet.isAlive) bullet.update();
-      }
-      // Remove dead bullets
-      bullets = bullets.filter(b => b.isAlive);
-      // Remove dead asteroids
-      asteroids = asteroids.filter(a => a.isAlive);
-      // --- Collision Checks ---
-      // Ship-Asteroid
-      if (ship.isAlive) {
-        for (const asteroid of asteroids) {
-          if (asteroid.isAlive && CollisionSystem.circleCollides(ship, asteroid)) {
-            ship.kill();
-            gameManager.loseLife();
-            break;
-          }
-        }
-      }
-      // Bullet-Asteroid
-      for (const bullet of bullets) {
-        if (!bullet.isAlive) continue;
-        for (const asteroid of asteroids) {
-          if (asteroid.isAlive && CollisionSystem.circleCollides(bullet, asteroid)) {
-            bullet.isAlive = false;
-            asteroid.isAlive = false;
-            gameManager.addScore(100);
-            // Optionally split asteroid if large
-            if (asteroid.radius > 25) {
-              for (let i = 0; i < 2; i++) {
-                asteroids.push(new Asteroid(
-                  asteroid.x,
-                  asteroid.y,
-                  asteroid.radius / 2,
-                  asteroid.speed * 1.2,
-                  Math.random() * Math.PI * 2
-                ));
-              }
-            }
-            break;
-          }
-        }
-      }
+      updateGame();
+      handleCollisions();
       // Win condition: all asteroids destroyed
       if (asteroids.length === 0 && ship.isAlive) {
         spawnAsteroids();
@@ -201,30 +214,58 @@ function loop(ts) {
   requestAnimationFrame(loop);
 }
 
+
 // --- Start/Transition Logic ---
-window.addEventListener('keydown', (e) => {
-  if (!gameStarted && (e.code === 'Enter' || e.code === 'Space')) {
+function isStartKey(e) {
+  return e.code === "Enter" || e.code === "Space";
+}
+function isShootKey(e) {
+  return e.code === "Space";
+}
+function isRestartKey(e) {
+  return e.code === "KeyR";
+}
+
+function handleShoot() {
+  if (canShoot && bullets.length < 5) {
+    bullets.push(new Bullet(
+      ship.x + Math.cos(ship.angle) * ship.radius,
+      ship.y + Math.sin(ship.angle) * ship.radius,
+      ship.angle
+    ));
+    canShoot = false;
+  }
+}
+
+function handleRestart() {
+  restartGame();
+}
+
+function canShootNow() {
+  return gameStarted && !gameManager.gameOver && ship.isAlive;
+}
+function canRestartNow() {
+  return gameManager.gameOver;
+}
+
+function handleKeyDown(e) {
+  if (!gameStarted && isStartKey(e)) {
     gameStarted = true;
     startGame();
+    return;
   }
-  // Shooting
-  if (gameStarted && !gameManager.gameOver && ship.isAlive && (e.code === 'Space')) {
-    if (canShoot && bullets.length < 5) {
-      bullets.push(new Bullet(
-        ship.x + Math.cos(ship.angle) * ship.radius,
-        ship.y + Math.sin(ship.angle) * ship.radius,
-        ship.angle
-      ));
-      canShoot = false;
-    }
+  if (canShootNow() && isShootKey(e)) {
+    handleShoot();
+    return;
   }
-  // Restart
-  if (gameManager.gameOver && e.code === 'KeyR') {
-    restartGame();
+  if (canRestartNow() && isRestartKey(e)) {
+    handleRestart();
   }
-});
-window.addEventListener('keyup', (e) => {
-  if (e.code === 'Space') {
+}
+
+window.addEventListener("keydown", handleKeyDown);
+window.addEventListener("keyup", (e) => {
+  if (e.code === "Space") {
     canShoot = true;
   }
 });
