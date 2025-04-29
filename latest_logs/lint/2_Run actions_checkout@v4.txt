@@ -1,0 +1,67 @@
+﻿2025-04-22T22:04:37.3819680Z ##[group]Run actions/checkout@v4
+2025-04-22T22:04:37.3820509Z with:
+2025-04-22T22:04:37.3820928Z   repository: Jake-Brewer/asteroids-2d
+2025-04-22T22:04:37.3821570Z   token: ***
+2025-04-22T22:04:37.3821943Z   ssh-strict: true
+2025-04-22T22:04:37.3822323Z   ssh-user: git
+2025-04-22T22:04:37.3822713Z   persist-credentials: true
+2025-04-22T22:04:37.3823141Z   clean: true
+2025-04-22T22:04:37.3823521Z   sparse-checkout-cone-mode: true
+2025-04-22T22:04:37.3823990Z   fetch-depth: 1
+2025-04-22T22:04:37.3824367Z   fetch-tags: false
+2025-04-22T22:04:37.3824755Z   show-progress: true
+2025-04-22T22:04:37.3825414Z   lfs: false
+2025-04-22T22:04:37.3825776Z   submodules: false
+2025-04-22T22:04:37.3826169Z   set-safe-directory: true
+2025-04-22T22:04:37.3827190Z ##[endgroup]
+2025-04-22T22:04:37.5527915Z Syncing repository: Jake-Brewer/asteroids-2d
+2025-04-22T22:04:37.5529754Z ##[group]Getting Git version info
+2025-04-22T22:04:37.5530504Z Working directory is '/home/runner/work/asteroids-2d/asteroids-2d'
+2025-04-22T22:04:37.5531490Z [command]/usr/bin/git version
+2025-04-22T22:04:37.5571013Z git version 2.49.0
+2025-04-22T22:04:37.5598605Z ##[endgroup]
+2025-04-22T22:04:37.5612217Z Temporarily overriding HOME='/home/runner/work/_temp/86a691ec-bc6d-4da1-be48-edca52a9bc92' before making global git config changes
+2025-04-22T22:04:37.5613582Z Adding repository directory to the temporary git global config as a safe directory
+2025-04-22T22:04:37.5624004Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/asteroids-2d/asteroids-2d
+2025-04-22T22:04:37.5656972Z Deleting the contents of '/home/runner/work/asteroids-2d/asteroids-2d'
+2025-04-22T22:04:37.5660535Z ##[group]Initializing the repository
+2025-04-22T22:04:37.5664966Z [command]/usr/bin/git init /home/runner/work/asteroids-2d/asteroids-2d
+2025-04-22T22:04:37.5723738Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-04-22T22:04:37.5725616Z hint: is subject to change. To configure the initial branch name to use in all
+2025-04-22T22:04:37.5726931Z hint: of your new repositories, which will suppress this warning, call:
+2025-04-22T22:04:37.5728151Z hint:
+2025-04-22T22:04:37.5728941Z hint: 	git config --global init.defaultBranch <name>
+2025-04-22T22:04:37.5730029Z hint:
+2025-04-22T22:04:37.5730889Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-04-22T22:04:37.5732056Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-04-22T22:04:37.5732763Z hint:
+2025-04-22T22:04:37.5733128Z hint: 	git branch -m <name>
+2025-04-22T22:04:37.5733850Z Initialized empty Git repository in /home/runner/work/asteroids-2d/asteroids-2d/.git/
+2025-04-22T22:04:37.5741257Z [command]/usr/bin/git remote add origin https://github.com/Jake-Brewer/asteroids-2d
+2025-04-22T22:04:37.5773268Z ##[endgroup]
+2025-04-22T22:04:37.5773997Z ##[group]Disabling automatic garbage collection
+2025-04-22T22:04:37.5777255Z [command]/usr/bin/git config --local gc.auto 0
+2025-04-22T22:04:37.5805519Z ##[endgroup]
+2025-04-22T22:04:37.5806186Z ##[group]Setting up auth
+2025-04-22T22:04:37.5811711Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-04-22T22:04:37.5841032Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-04-22T22:04:37.6120983Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-04-22T22:04:37.6149524Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-04-22T22:04:37.6373690Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-04-22T22:04:37.6409474Z ##[endgroup]
+2025-04-22T22:04:37.6410237Z ##[group]Fetching the repository
+2025-04-22T22:04:37.6417736Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +954fd3f64931324a234a5d2c36ac13d8bb0a8157:refs/remotes/origin/main
+2025-04-22T22:04:38.1684248Z From https://github.com/Jake-Brewer/asteroids-2d
+2025-04-22T22:04:38.1687481Z  * [new ref]         954fd3f64931324a234a5d2c36ac13d8bb0a8157 -> origin/main
+2025-04-22T22:04:38.1710841Z ##[endgroup]
+2025-04-22T22:04:38.1712187Z ##[group]Determining the checkout info
+2025-04-22T22:04:38.1713505Z ##[endgroup]
+2025-04-22T22:04:38.1717800Z [command]/usr/bin/git sparse-checkout disable
+2025-04-22T22:04:38.1756067Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-04-22T22:04:38.1782943Z ##[group]Checking out the ref
+2025-04-22T22:04:38.1786323Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2025-04-22T22:04:38.1841839Z Switched to a new branch 'main'
+2025-04-22T22:04:38.1844239Z branch 'main' set up to track 'origin/main'.
+2025-04-22T22:04:38.1851588Z ##[endgroup]
+2025-04-22T22:04:38.1883810Z [command]/usr/bin/git log -1 --format=%H
+2025-04-22T22:04:38.1905676Z 954fd3f64931324a234a5d2c36ac13d8bb0a8157
